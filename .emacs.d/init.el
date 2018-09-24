@@ -36,3 +36,12 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; Setting default font to Consolas
+(set-face-attribute 'default nil
+                    :family "Consolas"
+                    :height 110
+                    :weight 'normal
+                    :width 'normal)
+;; Loading a dark theme
+(load-theme 'deeper-blue) 
