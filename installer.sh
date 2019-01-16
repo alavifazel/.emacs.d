@@ -2,8 +2,8 @@
 
 echo "Installing Kuma editor..."
 
-cp -r ./i-man/ ~/.emacs.d/
-cp i-man.el ~/.emacs.d/i-man.el
+cp -r ./i_man/ ~/.emacs.d/
+cp init.el ~/.emacs.d/init.el
 
 while true; do
     read -p "Do you wish to add the alias 'e' for the emacs? " yn

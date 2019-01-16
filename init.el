@@ -11,6 +11,7 @@
        nord-theme
        company-irony
        irony
+       neotree
        ))
 
 
@@ -134,3 +135,6 @@
 (load-theme 'nord t)
 (setq nord-comment-brightness 20)
 
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
