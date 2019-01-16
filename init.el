@@ -12,6 +12,8 @@
        company-irony
        irony
        neotree
+       php-mode
+       web-mode
        ))
 
 
@@ -138,3 +140,7 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(require 'php-mode)
+(eval-after-load 'php-mode
+  '(require 'php-ext))
