@@ -139,6 +139,7 @@
 
 
 (require 'neotree)
+(setq-default neo-show-hidden-files t) ; show hidden files (starting with .)
 (global-set-key [f8] 'neotree-toggle)
 
 (require 'php-mode)
