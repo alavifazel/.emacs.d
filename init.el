@@ -144,3 +144,5 @@
 (require 'php-mode)
 (eval-after-load 'php-mode
   '(require 'php-ext))
+
+(global-set-key "\M-k" '(lambda () (interactive) (kill-line 0)) ) ; defines M-k as Backward C-k
