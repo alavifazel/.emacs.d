@@ -147,3 +147,5 @@
   '(require 'php-ext))
 
 (global-set-key "\M-k" '(lambda () (interactive) (kill-line 0)) ) ; defines M-k as Backward C-k
+
+(global-set-key (kbd "C-w") 'backward-kill-word) ; C-w deletes previous word; just like terminal
