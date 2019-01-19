@@ -14,6 +14,8 @@
        neotree
        php-mode
        web-mode
+       yasnippet ; yasnippet snippets are now in a seperated package installing that package belowe
+       yasnippet-snippets
        ))
 
 
@@ -149,3 +151,11 @@
 (global-set-key "\M-k" '(lambda () (interactive) (kill-line 0)) ) ; defines M-k as Backward C-k
 
 (global-set-key (kbd "C-w") 'backward-kill-word) ; C-w deletes previous word; just like terminal
+
+; enabling auto-complete
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require 'yasnippet)
+(yas-global-mode 1)
