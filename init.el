@@ -14,6 +14,7 @@
        neotree
        php-mode
        web-mode
+       auto-complete
        yasnippet ; yasnippet snippets are now in a seperated package installing that package belowe
        yasnippet-snippets
        ))
