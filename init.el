@@ -157,6 +157,7 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+(ac-linum-workaround) ; needed so numbering won't flicker 
 
 (require 'yasnippet)
 (yas-global-mode 1)
