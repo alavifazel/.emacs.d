@@ -137,8 +137,8 @@
 (global-set-key (kbd "C-k") 'delete-line-no-kill)
 
 
-(load-theme 'nord t)
-(setq nord-comment-brightness 20)
+;; (load-theme 'nord t)
+;; (setq nord-comment-brightness 20)
 
 
 (require 'neotree)

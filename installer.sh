@@ -1,9 +1,8 @@
 #!/usr/bin/bash
 
-echo "Installing Kuma editor..."
+echo "Applying the config..."
 
-cp -r ./i_man/ ~/.emacs.d/
-cp init.el ~/.emacs.d/init.el
+cp ./init.el ~/.emacs.d/
 
 while true; do
     read -p "Do you wish to add the alias 'e' for the emacs? " yn
