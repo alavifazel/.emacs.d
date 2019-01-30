@@ -162,4 +162,4 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(setq compile-command "make -C ../ && ../a.out")
+(setq compile-command "make -C ../ && ../project")
