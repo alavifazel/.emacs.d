@@ -1,9 +1,9 @@
 This is my optimal Emacs config. Some of the main configs are as follows: 
 
 * CuaMode enabled (cutting/copying/pasting is done with shortcuts presented in most softwares).
-* <C-k> doesn't cut the text, it deletes it (same as in terminals).
-* <M-k> acts like <C-k> but backwards (it deletes text from cursor to beginning of a line).
-* <C-w> deletes the previous word (same as in Vim and terminals).
+* <pre><C-k></pre> doesn't cut the text, it deletes it (same as in terminals).
+* <pre><M-k></pre> acts like <pre><C-k></pre> but backwards (it deletes text from cursor to beginning of a line).
+* <pre><C-w></pre> deletes the previous word (same as in Vim and terminals).
 * auto-complete enabled (mainly for C++).
 * No auto-generated backup files (cleaner working tree directory).
 * neoTree enabled (can be toggled with F8).
