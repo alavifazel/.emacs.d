@@ -4,6 +4,8 @@ echo "Applying the config..."
 
 cp ./init.el ~/.emacs.d/
 
+echo 'stty susp undef' >> ~/.bashrc
+
 while true; do
     read -p "Do you wish to add the alias 'e' for the emacs? " yn
     case $yn in
