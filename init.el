@@ -163,3 +163,9 @@
 (yas-global-mode 1)
 
 (setq compile-command "make -C ../ && ../project")
+
+(electric-pair-mode 1)
+
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-f") 'isearch-forward)
+

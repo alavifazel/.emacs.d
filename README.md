@@ -1,6 +1,7 @@
 This is my optimal Emacs config. Some of the main configs are as follows: 
 
 * CuaMode enabled (cutting/copying/pasting is done with shortcuts presented in most softwares).
+* Save and search is done like other places (`Ctrl + s` and `Ctrl + f`)
 * `<C-k>` doesn't cut the text, it deletes it (same as in terminals).
 * `<M-k>` acts like `<C-k>` but backwards (it deletes text from cursor to beginning of a line).
 * `<C-w>` deletes the previous word (same as in Vim and terminals).
