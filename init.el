@@ -169,3 +169,5 @@
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-f") 'isearch-forward)
 
+; disables beeping sound
+(setq ring-bell-function 'ignore)
