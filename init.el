@@ -171,3 +171,5 @@
 
 ; disables beeping sound
 (setq ring-bell-function 'ignore)
+
+(global-set-key (kbd "C-q") 'save-buffers-kill-terminal)
