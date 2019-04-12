@@ -167,9 +167,22 @@
 (electric-pair-mode 1)
 
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-unset-key (kbd "C-x C-s"))
+(global-unset-key (kbd "C-x s"))
+
 (global-set-key (kbd "C-f") 'isearch-forward)
 
-; disables beeping sound
-(setq ring-bell-function 'ignore)
+(global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
+(global-unset-key (kbd "C-x C-c"))
 
-(global-set-key (kbd "C-q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-o") 'find-file)
+(global-unset-key (kbd "C-x C-f"))
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
