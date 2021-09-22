@@ -20,7 +20,7 @@
 
 (defun load-scripts (file)
   (interactive)
-  (load-file (expand-file-name file "./iscripts/")))
+  (load-file (expand-file-name file "~/.emacs.d/iscripts/")))
 
 (defun add-ijava ()
     (load-scripts "java.el") )

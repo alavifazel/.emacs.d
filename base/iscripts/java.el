@@ -1,3 +1,6 @@
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
 (defun sti ()
   "Convert String to Integer."
   (when (eq major-mode 'java-mode))
