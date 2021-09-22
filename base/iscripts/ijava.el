@@ -50,7 +50,7 @@
   (goto-char (region-end))
 
   (insert "\n")
-  (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var "\t) { \n" ))
+  (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
   (insert (concat "\t\t" "return this." gs-var ";\n"))
   (insert "\t}\n")
 
@@ -58,3 +58,27 @@
   (insert (concat "\tpublic void set" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
   (insert (concat "\t\t" "this." gs-var " = " gs-var ";\n"))
   (insert "\t}\n") )
+
+(defun pi (f-name)
+  (interactive "sField name:")
+  (insert (concat "private int " f-name ";"))
+  (setq p (line-number-at-pos))
+  (insert "\n")
+  (goto-line p)
+  (goto-char (line-end-position)) )
+
+(defun pb (f-name)
+  (interactive "sField name:")
+  (insert (concat "private bool " f-name ";"))
+  (setq p (line-number-at-pos))
+  (insert "\n")
+  (goto-line p)
+  (goto-char (line-end-position)) )
+
+(defun ps (f-name)
+  (interactive "sField name:")
+  (insert (concat "private String " f-name ";"))
+  (setq p (line-number-at-pos))
+  (insert "\n")
+  (goto-line p)
+  (goto-char (line-end-position)) )
