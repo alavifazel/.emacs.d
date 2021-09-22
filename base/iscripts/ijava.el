@@ -15,6 +15,26 @@
   (insert "String.valueOf();")
   (backward-char 2))
 
+(defun c (c-name)
+  (interactive "sClass name ")
+  (insert (concat "class " c-name " {\n" ))
+  (insert (concat "\tpublic " c-name "() {" ))
+  (insert "\n")
+  (setq p (line-number-at-pos))
+  (insert "\n")
+  (insert "\t}\n")
+  (insert "};\n")
+  (goto-line p)
+  (insert "\t\t") )
+
+(defun e (e-name)
+  (interactive "sEnum name ")
+  (insert (concat "enum " e-name " {\n" ))
+  (setq p (line-number-at-pos))
+  (insert "\n};\n")
+  (goto-line p)
+  (insert (concat "\tVALUE,")) )
+
 (defun gs ()
   "Generate getters/setter."
   (when (eq major-mode 'java-mode))
@@ -29,7 +49,7 @@
   (print gs-type)
   (goto-char (region-end))
 
-  (insert "\n\n")
+  (insert "\n")
   (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var "\t) { \n" ))
   (insert (concat "\t\t" "return this." gs-var ";\n"))
   (insert "\t}\n")
