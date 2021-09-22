@@ -23,7 +23,7 @@
   (load-file (expand-file-name file "~/.emacs.d/iscripts/")))
 
 (defun add-ijava ()
-    (load-scripts "java.el") )
+    (load-scripts "ijava.el") )
 
 (advice-add 'java-mode :before #'add-ijava)
 

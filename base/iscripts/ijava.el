@@ -30,11 +30,11 @@
   (goto-char (region-end))
 
   (insert "\n\n")
-  (insert (concat "public " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
-  (insert (concat "\t" "return this." gs-var ";\n"))
-  (insert "}\n")
+  (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var "\t) { \n" ))
+  (insert (concat "\t\t" "return this." gs-var ";\n"))
+  (insert "\t}\n")
 
   (insert "\n")
-  (insert (concat "public void set" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
-  (insert (concat "\t" "this." gs-var " = " gs-var ";\n"))
-  (insert "}\n") )
+  (insert (concat "\tpublic void set" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
+  (insert (concat "\t\t" "this." gs-var " = " gs-var ";\n"))
+  (insert "\t}\n") )
