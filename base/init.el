@@ -27,3 +27,10 @@
 
 (advice-add 'java-mode :before #'add-ijava)
 
+;; Add terminal launch shortcuts
+(defconst terminal-name "gnome-terminal")
+
+(defun terminal ()
+  (interactive)
+  (shell-command terminal-name) )
+
