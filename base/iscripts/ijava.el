@@ -17,7 +17,7 @@
 
 (defun c (c-name)
   (interactive "sClass name ")
-  (insert (concat "class " c-name " {\n" ))
+  (insert (concat "public class " c-name " {\n" ))
   (insert (concat "\tpublic " c-name "() {" ))
   (insert "\n")
   (setq p (line-number-at-pos))
@@ -50,7 +50,7 @@
   (goto-char (region-end))
 
   (insert "\n")
-  (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "(" gs-type " " gs-var ") { \n" ))
+  (insert (concat "\tpublic " gs-type " " "get" (capitalize gs-var) "() { \n" ))
   (insert (concat "\t\t" "return this." gs-var ";\n"))
   (insert "\t}\n")
 
@@ -59,7 +59,7 @@
   (insert (concat "\t\t" "this." gs-var " = " gs-var ";\n"))
   (insert "\t}\n") )
 
-(defun pi (f-name)
+(defun intf (f-name) ;; To distinguish between 'if' syntax
   (interactive "sField name:")
   (insert (concat "private int " f-name ";"))
   (setq p (line-number-at-pos))
@@ -67,7 +67,7 @@
   (goto-line p)
   (goto-char (line-end-position)) )
 
-(defun pb (f-name)
+(defun bf (f-name)
   (interactive "sField name:")
   (insert (concat "private bool " f-name ";"))
   (setq p (line-number-at-pos))
@@ -75,7 +75,7 @@
   (goto-line p)
   (goto-char (line-end-position)) )
 
-(defun ps (f-name)
+(defun sf (f-name)
   (interactive "sField name:")
   (insert (concat "private String " f-name ";"))
   (setq p (line-number-at-pos))
