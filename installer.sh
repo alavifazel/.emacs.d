@@ -2,8 +2,8 @@
 
 echo "Applying the config..."
 
-cp ./base/init.el ~/.emacs.d/
-cp -r ./base/iscripts ~/.emacs.d/
+cp ./iEmacs/init.el ~/.emacs.d/
+cp -r ./iEmacs/iscripts ~/.emacs.d/
 
 while true; do
     read -p "Do you wish to add the alias 'e' for the emacs? " yn
