@@ -8,6 +8,7 @@
 
 (require 'evil)
 (evil-mode 1)
+
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(package-selected-packages (quote (company evil))))
@@ -17,27 +18,6 @@
 (electric-pair-mode t)
 (load-theme 'wombat)
 (show-paren-mode 1)
-
-(defun load-scripts (file)
-  (interactive)
-  (load-file (expand-file-name file "~/.emacs.d/iscripts/")))
-
-(defun add-ijava ()
-    (load-scripts "ijava.el") )
-
-(advice-add 'java-mode :before #'add-ijava)
-
-;; Add terminal launch shortcuts
-(defconst terminal-name "gnome-terminal")
-
-(defun terminal ()
-  (interactive)
-  (shell-command terminal-name) )
-
-(defun files()
-(defconst files-name "nautilus")
-  (interactive)
-  (shell-command files-name) )
 
 (setq doc-view-continuous t)
 (setq doc-view-resolution 200)
@@ -49,17 +29,32 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq scroll-step 2)
 
-(display-line-numbers-mode)
-(load-theme 'tsdh-light)
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
 
 (global-tab-line-mode t)
 (setq tab-line-new-button-show nil)
 (setq tab-line-close-button-show nil)
 (setq tab-line-separator "")
 
-(display-line-numbers-mode)
-(setq redisplay-dont-pause t
-  scroll-margin 1
-  scroll-step 1
-  scroll-conservatively 10000
-  scroll-preserve-screen-position 1)
+(setq scroll-conservatively 101)
+(global-hl-line-mode)
+
+;; Add terminal launch shortcuts
+(defconst terminal-name "gnome-terminal")
+(defconst files-name "nautilus")
+
+(defun terminal ()
+  (interactive)
+  (shell-command terminal-name) )
+
+(defun files()
+  (interactive)
+  (shell-command files-name) )
+
+;; Remove underline when (global-hl-line-mode) is on
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(package-selected-packages '(company evil)))
+(custom-set-faces
+ '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
