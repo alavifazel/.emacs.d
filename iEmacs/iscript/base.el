@@ -40,7 +40,7 @@
 (setq scroll-conservatively 101)
 (global-hl-line-mode)
 
-;; Add terminal launch shortcuts
+;; Add software launch shortcuts
 (defconst terminal-name "gnome-terminal")
 (defconst files-name "nautilus")
 
@@ -58,3 +58,15 @@
  '(package-selected-packages '(company evil)))
 (custom-set-faces
  '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
+
+;; Disable long lines
+(setq-default truncate-lines nil)
+
+;; Bind 'dired' to F1 key
+(defun launch-dired ()
+  "Lanuches Dired in antoher frame."
+  (interactive)
+  (dired ".")
+  )
+
+(global-set-key [f1] 'launch-dired)

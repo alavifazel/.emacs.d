@@ -1,12 +1,24 @@
 (defun load-scripts (file)
   (interactive)
-  (load-file (expand-file-name file "~/.emacs.d/iscripts/")))
+  (load-file (expand-file-name file "~/.emacs.d/")))
 
 ;; Load base config file 
-(load-scripts "ibase.el")
+(load-scripts "iscript/base.el")
+(load-scripts "config/org_config.el")
 
 ;; Add IJava only when the java-mode is on
 (defun add-ijava ()
-    (load-scripts "ijava.el") )
+    (load-scripts "iscript/java.el") )
 
 (advice-add 'java-mode :before #'add-ijava)
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(org-file-apps
+   '(("\\.docx\\'" . default)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "evince %s")
+     (auto-mode . emacs)))
+ '(package-selected-packages '(company evil)))
+(custom-set-faces
+ '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
