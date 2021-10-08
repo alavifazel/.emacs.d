@@ -3,9 +3,18 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+;; TODO Refractor below lines
 (unless (package-installed-p 'evil)
-  (package-install 'evil)
-  (package-install 'unto-tree))
+  (package-install 'evil))
+
+(unless (package-installed-p 'undo-tree)
+  (package-install 'undo-tree))
+
+(unless (package-installed-p 'company-box)
+  (package-install 'company-box))
+
+(require 'company-box)
+(add-hook 'company-mode-hook 'company-box-mode)
 
 (require 'evil)
 (evil-mode 1)
@@ -72,4 +81,4 @@
   (dired ".")
   )
 
-(global-set-key [f1] 'launch-dired)
+(global-set-key [f4] 'launch-dired)

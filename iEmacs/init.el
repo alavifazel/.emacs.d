@@ -2,11 +2,11 @@
   (interactive)
   (load-file (expand-file-name file "~/.emacs.d/")))
 
-;; Load base config file 
-(load-scripts "iscript/base.el")
+;; Load config files
+(load-scripts "config/base.el")
 (load-scripts "config/org_config.el")
 
-;; Add IJava only when the java-mode is on
+;; Add IJava (only when the java-mode is on)
 (defun add-ijava ()
     (load-scripts "iscript/java.el") )
 
