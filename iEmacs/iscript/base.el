@@ -4,10 +4,13 @@
 (package-initialize)
 
 (unless (package-installed-p 'evil)
-  (package-install 'evil))
+  (package-install 'evil)
+  (package-install 'unto-tree))
 
 (require 'evil)
 (evil-mode 1)
+(evil-set-undo-system 'undo-tree)
+(global-undo-tree-mode)
 
 (custom-set-variables
  '(inhibit-startup-screen t)
