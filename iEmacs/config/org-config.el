@@ -1,10 +1,9 @@
-(defconst org-mode-author "Iman Alavi Fazel")
-
+(load-file (concat user-emacs-directory "conf.el"))
 (defun org-front-matter ()
   (interactive)
   (goto-line 0)
   (insert "#+title: " "\n")
-  (insert "#+author: " org-mode-author "\n")
+  (insert "#+author: " user-name "\n")
   (insert "#+lastmod: ")
   (org-time-stamp-inactive t)
   (insert "\n")

@@ -3,7 +3,6 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-;; TODO Refractor below lines
 (unless (package-installed-p 'evil)
   (package-install 'evil))
 
