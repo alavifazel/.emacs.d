@@ -3,6 +3,9 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (unless (package-installed-p 'evil)
   (package-install 'evil))
 
@@ -81,3 +84,19 @@
   )
 
 (global-set-key [f4] 'launch-dired)
+
+(setq margins-enabled nil)
+(defun set-margins ()
+  (interactive)
+  (if margins-enabled
+  (progn margins-enabled
+    (setq-default left-margin-width 0 right-margin-width 0)
+    (set-window-buffer nil (current-buffer))
+    (setq margins-enabled nil)
+    )
+  (progn 
+    (setq-default left-margin-width 35 right-margin-width 35)
+    (set-window-buffer nil (current-buffer))
+    (setq margins-enabled t)
+    ))
+  )
