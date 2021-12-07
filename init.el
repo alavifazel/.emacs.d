@@ -13,10 +13,6 @@
 
 (advice-add 'java-mode :before #'add-ijava)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-file-apps
    '(("\\.docx\\'" . default)
@@ -24,10 +20,6 @@
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince %s")
      (auto-mode . emacs)) t)
- '(package-selected-packages '(god-mode company-box undo-tree company evil)))
+ '(package-selected-packages '(company)))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))

@@ -1,4 +1,3 @@
-(load-file (concat user-emacs-directory "conf.el"))
 (defun org-front-matter ()
   (interactive)
   (goto-line 0)
