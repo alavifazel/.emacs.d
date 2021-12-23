@@ -4,7 +4,7 @@
 (package-initialize)
 
 (electric-pair-mode t)
-(load-theme 'wombat)
+(load-theme 'adwaita)
 (show-paren-mode 1)
 
 (custom-set-variables
@@ -31,7 +31,6 @@
 (setq tab-line-separator "")
 
 (setq scroll-conservatively 101)
-(global-hl-line-mode)
 
 ;; Add software launch shortcuts
 (defconst terminal-name "gnome-terminal")
@@ -46,11 +45,11 @@
   (shell-command files-name) )
 
 ;; Remove underline when (global-hl-line-mode) is on
-(custom-set-variables
- '(inhibit-startup-screen t)
- '(package-selected-packages '(company)))
-(custom-set-faces
- '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
+;; (custom-set-variables
+;;  '(inhibit-startup-screen t)
+;;  '(package-selected-packages '(company)))
+;; (custom-set-faces
+;;  '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
 
 ;; Disable long lines
 (setq-default truncate-lines nil)

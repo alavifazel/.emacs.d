@@ -2,6 +2,8 @@
   (interactive)
   (load-file (expand-file-name file "~/.emacs.d/")))
 
+(evil-mode)
+
 ;; Load config files
 (load-scripts "config/base.el")
 (load-scripts "config/org-config.el")
@@ -19,7 +21,5 @@
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince %s")
-     (auto-mode . emacs)) t)
- '(package-selected-packages '(company)))
-(custom-set-faces
- '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
+     (auto-mode . emacs)))
+ '(package-selected-packages '(evil emmet-mode company)))
