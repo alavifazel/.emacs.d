@@ -3,6 +3,7 @@
 (setq pkgs '(
        company
        evil
+       undo-tree
        ))
 
 (require 'package)
@@ -29,7 +30,6 @@
 (defun emacs-initialize ()
   (require 'package)
   (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
-  
   (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
 		      (not (gnutls-available-p))))
 	 (proto (if no-ssl "http" "https")))
@@ -40,7 +40,9 @@
 
   ;; Evil-mode
   (evil-mode)
-
+  (global-undo-tree-mode)
+  (evil-set-undo-system 'undo-tree)
+  
   ;; Load config files
   (load-scripts "config/base.el")
   (load-scripts "config/org-config.el")
@@ -63,6 +65,10 @@
 
 (emacs-initialize)
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-file-apps
    (quote
@@ -72,4 +78,9 @@
      ("\\.pdf\\'" . "evince %s")
      (auto-mode . emacs))))
  '(package-selected-packages (quote (evil emmet-mode company))))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
