@@ -35,8 +35,12 @@
 	 (proto (if no-ssl "http" "https")))
     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t ))
   
-  (install pkgs) ;; Install missing packages
-  
+  ;; Install missing packages
+  (install pkgs)
+
+  ;; Evil-mode
+  (evil-mode)
+
   ;; Load config files
   (load-scripts "config/base.el")
   (load-scripts "config/org-config.el")
@@ -52,16 +56,13 @@
        ("\\.pdf\\'" . "evince %s")
        (auto-mode . emacs)))
    '(package-selected-packages '(evil emmet-mode company)))
+
   ;; Add IJava only when the java-mode is on
   (defun add-ijava ()
     (load-scripts "iscript/java.el")))
 
 (emacs-initialize)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-file-apps
    (quote
@@ -71,9 +72,4 @@
      ("\\.pdf\\'" . "evince %s")
      (auto-mode . emacs))))
  '(package-selected-packages (quote (evil emmet-mode company))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
