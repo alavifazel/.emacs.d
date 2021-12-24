@@ -1,25 +1,79 @@
+(package-initialize)
+
+(setq pkgs '(
+       company
+       evil
+       ))
+
+(require 'package)
+(require 'cl)
+
 (defun load-scripts (file)
   (interactive)
   (load-file (expand-file-name file "~/.emacs.d/")))
-
-(evil-mode)
-
-;; Load config files
-(load-scripts "config/base.el")
-(load-scripts "config/org-config.el")
-(load-scripts "config/org-timer.el")
 
 ;; Add IJava only when the java-mode is on
 (defun add-ijava ()
     (load-scripts "iscript/java.el") )
 
-(advice-add 'java-mode :before #'add-ijava)
+(defun install (required-pkgs)
+  (setq pkgs-to-install
+      (let ((uninstalled-pkgs (remove-if 'package-installed-p required-pkgs)))
+        (remove-if-not '(lambda (pkg) (y-or-n-p (format "Package %s is missing. Install it? " pkg))) uninstalled-pkgs)))
+
+  (when (> (length pkgs-to-install) 0)
+    (package-refresh-contents)
+   (dolist (pkg pkgs-to-install)
+    (package-install pkg))))
+
+(defun emacs-initialize ()
+  (require 'package)
+  (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
+  
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		      (not (gnutls-available-p))))
+	 (proto (if no-ssl "http" "https")))
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t ))
+  
+  (install pkgs) ;; Install missing packages
+  
+  ;; Load config files
+  (load-scripts "config/base.el")
+  (load-scripts "config/org-config.el")
+  (load-scripts "config/org-timer.el")
+
+  (advice-add 'java-mode :before #'add-ijava)
+  (custom-set-variables
+   '(inhibit-startup-screen t)
+   '(org-file-apps
+     '(("\\.docx\\'" . default)
+       ("\\.mm\\'" . default)
+       ("\\.x?html?\\'" . default)
+       ("\\.pdf\\'" . "evince %s")
+       (auto-mode . emacs)))
+   '(package-selected-packages '(evil emmet-mode company)))
+  ;; Add IJava only when the java-mode is on
+  (defun add-ijava ()
+    (load-scripts "iscript/java.el")))
+
+(emacs-initialize)
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-file-apps
-   '(("\\.docx\\'" . default)
+   (quote
+    (("\\.docx\\'" . default)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince %s")
-     (auto-mode . emacs)))
- '(package-selected-packages '(evil emmet-mode company)))
+     (auto-mode . emacs))))
+ '(package-selected-packages (quote (evil emmet-mode company))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
