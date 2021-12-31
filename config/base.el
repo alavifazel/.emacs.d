@@ -7,6 +7,9 @@
 (load-theme 'adwaita)
 (show-paren-mode 1)
 
+;; Disables the bell sound
+(setq ring-bell-function 'ignore)
+
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(package-selected-packages (quote (company))))
@@ -22,9 +25,6 @@
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq scroll-step 2)
-
-(when (version<= "26.0.50" emacs-version )
-  (global-display-line-numbers-mode))
 
 (setq tab-line-new-button-show nil)
 (setq tab-line-close-button-show nil)
@@ -50,9 +50,6 @@
 ;;  '(package-selected-packages '(company)))
 ;; (custom-set-faces
 ;;  '(highlight ((t (:background "#454545" :foreground "#ffffff" :underline nil)))))
-
-;; Disable long lines
-(setq-default truncate-lines nil)
 
 (setq margins-enabled nil)
 (defun set-margins ()
