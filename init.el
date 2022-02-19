@@ -1,28 +1,33 @@
-(package-initialize)
-
 (setq pkgs '(
        evil
+       key-chord
        undo-tree
        company
+       company-posframe
        elpy
        python-mode
        jedi
        flycheck
+       lsp-mode
+       go-mode
        ))
+
+(linum-mode 1)
+(company-posframe-mode 1)
 
 (require 'package)
 (require 'cl)
 
-(defun load-scripts (file)
+(defun load-script (file)
   (interactive)
   (load-file (expand-file-name file "~/.emacs.d/")))
 
 ;; Add IJava only when the java-mode is on
 (defun add-ijava ()
-    (load-scripts "iscript/java.el"))
+    (load-script "iscript/java.el"))
 
 (defun add-ipython ()
-    (load-scripts "iscript/python.el"))
+    (load-script "iscript/python.el"))
 
 (defun install (required-pkgs)
   (setq pkgs-to-install
@@ -42,31 +47,35 @@
 	 (proto (if no-ssl "http" "https")))
     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t ))
   
-  ;; Install missing packages
-  (install pkgs)
+;; Install missing packages
+(install pkgs)
 
   ;; Evil-mode
-  (evil-mode)
-  (global-undo-tree-mode)
-  (evil-set-undo-system 'undo-tree)
-  
-  ;; Load config files
-  (load-scripts "config/base.el")
-  (load-scripts "config/org-config.el")
-  (load-scripts "config/org-timer.el")
+(evil-mode)
+(global-undo-tree-mode)
+(evil-set-undo-system 'undo-tree)
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-mode 1)  
 
-  (advice-add 'java-mode :before #'add-ijava)
-  (advice-add 'python-mode :before #'add-ipython)
+;; Load config files
+(load-script "config/base.el")
+(load-script "config/org-config.el")
+(load-script "config/org-timer.el")
+(load-script "config/go.el")
 
-  (custom-set-variables
-   '(inhibit-startup-screen t)
-   '(org-file-apps
-     '(("\\.docx\\'" . default)
-       ("\\.mm\\'" . default)
-       ("\\.x?html?\\'" . default)
-       ("\\.pdf\\'" . "evince %s")
-       (auto-mode . emacs)))
-   '(package-selected-packages '(evil emmet-mode company))))
+(advice-add 'java-mode :before #'add-ijava)
+(advice-add 'python-mode :before #'add-ipython)
+
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(org-file-apps
+   '(("\\.docx\\'" . default)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "evince %s")
+     (auto-mode . emacs)))
+ '(package-selected-packages '(evil emmet-mode company))))
 
 (emacs-initialize)
 (custom-set-variables
@@ -76,13 +85,16 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-file-apps
-   (quote
-    (("\\.docx\\'" . default)
+   '(("\\.docx\\'" . default)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince %s")
-     (auto-mode . emacs))))
+     (auto-mode . emacs)))
  '(package-selected-packages
-   (quote
-    (jedi python-mode flycheck ## elpy company-jedi web-mode company-phpactor company-php php-mode evil emmet-mode company))))
-(custom-set-faces)
+   '(solarized-theme go-mode eglot list-packages-ext flycheck-golangci-lint key-chord yasnippet-snippets lsp-mode js2-mode company-posframe jedi python-mode flycheck ## elpy company-jedi web-mode company-phpactor company-php php-mode evil emmet-mode company)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
