@@ -1,9 +1,7 @@
 (setq pkgs '(
-       evil
        key-chord
        undo-tree
        company
-       company-posframe
        elpy
        python-mode
        jedi
@@ -13,7 +11,6 @@
        ))
 
 (linum-mode 1)
-(company-posframe-mode 1)
 
 (require 'package)
 (require 'cl)
@@ -50,13 +47,8 @@
 ;; Install missing packages
 (install pkgs)
 
-  ;; Evil-mode
-(evil-mode)
-(global-undo-tree-mode)
-(evil-set-undo-system 'undo-tree)
-(setq key-chord-two-keys-delay 0.5)
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-(key-chord-mode 1)  
+;; Cua mode
+(cua-mode t)
 
 ;; Load config files
 (load-script "config/base.el")
