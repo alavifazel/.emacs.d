@@ -1,0 +1,10 @@
+# Ignore everything
+/*
+
+# Except my config
+!.gitignore
+!init.el
+!early-init.el
+!custom.el
+!/init/
+!README.md
