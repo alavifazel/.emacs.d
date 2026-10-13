@@ -13,3 +13,9 @@
 (require 'init-treemacs)
 (require 'init-rust)
 (require 'init-del-mode)
+
+(defun my/eshell-setup ()
+  (local-set-key (kbd "RET") #'eshell-send-input)
+  (local-set-key (kbd "<return>") #'eshell-send-input))
+
+(add-hook 'eshell-mode-hook #'my/eshell-setup)

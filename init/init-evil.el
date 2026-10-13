@@ -6,7 +6,11 @@
         evil-want-C-u-scroll t
         evil-undo-system 'undo-redo)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; Set initial state for shell modes AFTER evil loads
+  (evil-set-initial-state 'eshell-mode 'emacs)
+  (evil-set-initial-state 'shell-mode 'emacs)
+  (evil-set-initial-state 'term-mode 'emacs))
 
 (use-package evil-collection
   :after evil
