@@ -20,8 +20,17 @@
   (company-minimum-prefix-length 2)
   (company-idle-delay 0.1))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (use-package company-auctex
   :after (company tex)
   :config (company-auctex-init))
+
+; in latex mode, when we open a pdf with C-c C-v, you see an annoying blink around the opened pdf. the following code disables that
+(add-hook 'pdf-view-mode-hook
+          (lambda ()
+            (setq-local cursor-type nil)
+            (blink-cursor-mode -1)))
 
 (provide 'init-packages)

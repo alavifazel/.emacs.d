@@ -15,6 +15,7 @@
 (require 'init-del-mode)
 (require 'init-latex)
 (require 'init-templates)
+(require 'init-spellcheck)
 
 (defun my/eshell-setup ()
   (local-set-key (kbd "RET") #'eshell-send-input)
