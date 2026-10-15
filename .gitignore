@@ -7,4 +7,5 @@
 !early-init.el
 !custom.el
 !/init/
+!/templates/
 !README.md

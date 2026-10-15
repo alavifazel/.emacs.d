@@ -1,0 +1,45 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{amsmath, amssymb}
+
+\title{Generalization of Logistic Regression}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Setup}
+\begin{frame}{Training and true error}
+  Training error:
+  \[
+    \hat{\varepsilon}(h) = \frac{1}{n}\sum_{i=1}^{n} \mathbf{1}\{h(x_i) \neq y_i\}
+  \]
+  \pause
+  True error: $\varepsilon(h) = P_{(x,y)\sim D}(h(x) \neq y)$.
+\end{frame}
+
+\section{Main result}
+\begin{frame}{Bound}
+  \begin{theorem}
+    With probability at least $1-\delta$, for all $h \in H$:
+    \[
+      \varepsilon(h) \le \hat{\varepsilon}(h) + \sqrt{\frac{\ln(2k/\delta)}{2n}}
+    \]
+  \end{theorem}
+  \begin{itemize}
+    \item<2-> Hoeffding for one hypothesis
+    \item<3-> Union bound over all $k$
+  \end{itemize}
+\end{frame}
+
+\end{document}
