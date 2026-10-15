@@ -16,6 +16,7 @@
 (require 'init-latex)
 (require 'init-templates)
 (require 'init-spellcheck)
+(require 'init-pomo)
 
 (defun my/eshell-setup ()
   (local-set-key (kbd "RET") #'eshell-send-input)
