@@ -11,6 +11,17 @@
 (use-package marginalia :init (marginalia-mode))
 (use-package which-key :init (which-key-mode))
 (use-package magit) ; no need to :init for this. because there is no mode to turn it. it's just a set of commands 
-(use-package company :hook (prog-mode . company-mode)) ; :hook (x . y) means whenver the the prog-mode is enabled, enable copmany mode
+
+; auto-completion stuff
+(use-package company
+  :hook ((prog-mode . company-mode) ; :hook (x . y) means whenver the the prog-mode is enabled, enable copmany mode
+         (LaTeX-mode . company-mode))
+  :custom
+  (company-minimum-prefix-length 2)
+  (company-idle-delay 0.1))
+
+(use-package company-auctex
+  :after (company tex)
+  :config (company-auctex-init))
 
 (provide 'init-packages)

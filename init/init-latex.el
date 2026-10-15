@@ -26,4 +26,10 @@
 (use-package cdlatex)
 (use-package evil-tex :hook (LaTeX-mode . evil-tex-mode))
 
+; Hide warning garbage
+;; pdf-tools does not like line numbers
+(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+;; hide native-compiler noise
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (provide 'init-latex)
