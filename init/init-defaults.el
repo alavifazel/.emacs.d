@@ -9,3 +9,18 @@
 (global-auto-revert-mode 1)
 
 (provide 'init-defaults)
+
+; saving session
+(setq desktop-path (list user-emacs-directory)
+      desktop-save t
+      desktop-auto-save-timeout 30
+      desktop-restore-eager 10
+      desktop-load-locked-desktop t)
+
+;; Enable saving only after startup, so nothing is restored automatically.
+(add-hook 'emacs-startup-hook (lambda () (desktop-save-mode 1)))
+
+(defun my/restore-session ()
+  "Restore the last saved Emacs session."
+  (interactive)
+  (desktop-read))

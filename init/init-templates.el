@@ -18,4 +18,10 @@
     (copy-file (expand-file-name "~/.emacs.d/templates/beamer.tex") file)
     (find-file file)))
 
+(defun my/new-beamer-slide ()
+  "Insert the Beamer template at point."
+  (interactive)
+  (insert-file-contents (expand-file-name "~/.emacs.d/templates/new_beamer_slide.tex")))
+
+
 (provide 'init-templates)
