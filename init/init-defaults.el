@@ -1,3 +1,5 @@
+(require 'cl-lib)
+
 ; init-defaults.el -*- lexical-binding: t; -*-
 (setq make-backup-files nil
       auto-save-default nil
@@ -11,7 +13,8 @@
 (provide 'init-defaults)
 
 ; saving session
-(setq desktop-path (list user-emacs-directory)
+(setq desktop-dirname "~/"
+      desktop-path (list "~/")
       desktop-save t
       desktop-auto-save-timeout 30
       desktop-restore-eager 10
@@ -19,8 +22,15 @@
 
 ;; Enable saving only after startup, so nothing is restored automatically.
 (add-hook 'emacs-startup-hook (lambda () (desktop-save-mode 1)))
+(defun my/desktop-save-no-prompt (fn &rest args)
+  "Run FN without desktop's overwrite confirmations."
+  (cl-letf (((symbol-function 'yes-or-no-p) (lambda (&rest _) t))
+            ((symbol-function 'y-or-n-p) (lambda (&rest _) t)))
+    (apply fn args)))
+
+(advice-add 'desktop-save :around #'my/desktop-save-no-prompt)
 
 (defun my/restore-session ()
   "Restore the last saved Emacs session."
   (interactive)
-  (desktop-read))
+  (desktop-read desktop-dirname))

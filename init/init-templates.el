@@ -24,4 +24,9 @@
   (insert-file-contents (expand-file-name "~/.emacs.d/templates/new_beamer_slide.tex")))
 
 
+(defun my/new-latex-article()
+  "Insert Latex article template."
+  (interactive)
+  (insert-file-contents (expand-file-name "~/.emacs.d/templates/new_latex_article.tex")))
+
 (provide 'init-templates)

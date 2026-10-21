@@ -1,5 +1,14 @@
+(use-package pdf-tools
+  :ensure t
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  (pdf-tools-install :no-query)
+  (add-hook 'pdf-view-mode-hook
+            (lambda () (display-line-numbers-mode -1))))
+
 (use-package tex
   :ensure auctex
+  :defer t
   :hook ((LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . turn-on-reftex)
          (LaTeX-mode . turn-on-cdlatex)
@@ -12,24 +21,25 @@
         TeX-source-correlate-mode t
         TeX-source-correlate-start-server t
         TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
         reftex-plug-into-AUCTeX t)
   (add-hook 'TeX-after-compilation-finished-functions
             #'TeX-revert-document-buffer))
 
 (use-package auctex-latexmk
+  :ensure t
+  :after tex
   :config
-  (auctex-latexmk-setup)
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t))
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  (auctex-latexmk-setup))
 
-(use-package pdf-tools :config (pdf-tools-install))
-(use-package cdlatex)
-(use-package evil-tex :hook (LaTeX-mode . evil-tex-mode))
+(use-package cdlatex :ensure t)
 
-; Hide warning garbage
-;; pdf-tools does not like line numbers
-(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
-;; hide native-compiler noise
+(use-package evil-tex
+  :ensure t
+  :hook (LaTeX-mode . evil-tex-mode))
+
+;; Hide native-compiler noise
 (setq native-comp-async-report-warnings-errors 'silent)
+
 
 (provide 'init-latex)
