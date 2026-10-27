@@ -18,6 +18,8 @@
 (require 'init-spellcheck)
 (require 'init-pomo)
 (require 'init-cpp)
+(require 'init-clojure)
+(require 'init-make)
 
 (defun my/eshell-setup ()
   (local-set-key (kbd "RET") #'eshell-send-input)
