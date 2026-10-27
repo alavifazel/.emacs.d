@@ -1,6 +1,8 @@
 # Ignore everything
 /*
 
+*#
+
 # Except my config
 !.gitignore
 !init.el
